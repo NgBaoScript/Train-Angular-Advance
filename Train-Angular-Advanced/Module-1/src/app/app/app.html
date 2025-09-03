@@ -1,0 +1,26 @@
+<h1>Modern Angular 20</h1>
+
+<!-- @if -->
+@if (remaining() === 0) {
+  <p>Tuyệt vời! Không còn việc tồn đọng 🎉</p>
+} @else {
+  <p>Còn {{ remaining() }} việc cần làm.</p>
+}
+
+<!-- @for với track -->
+<ul>
+  @for (t of todos(); track t.id) {
+    <li>
+      <label>
+        <input type="checkbox" [checked]="t.done" (change)="toggle(t.id)" />
+        {{ t.title }}
+      </label>
+    </li>
+  }
+</ul>
+
+<!-- @defer: tải chậm 1 widget phụ -->
+@defer (on viewport) {
+} @placeholder {
+  <p>Đang tải thống kê…</p>
+}
